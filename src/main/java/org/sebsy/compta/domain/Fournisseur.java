@@ -1,11 +1,21 @@
 package org.sebsy.compta.domain;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
+@Entity
+@Table(name="fournisseur")
 public class Fournisseur {
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 60, unique = true)
     private String nom;
+    @Embedded
     private Adresse adresse;
 
     protected Fournisseur() {
