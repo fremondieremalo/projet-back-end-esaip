@@ -1,20 +1,17 @@
-package org.sebsy.compta.domaine;
+package org.sebsy.compta.domain;
 
-public class Adresse {
+import jakarta.persistence.Embeddable;
 
-    String rue;
-    String codePostal;
-    String ville;
+@Embeddable
+public record Adresse(String rue, String codePostal, String ville) {
 
-    public Adresse(String r, String c, String v) {
-        if (v != null) {
-            rue = r;
-            codePostal = c;
-            ville = v;
-        } else {
-            System.out.println("Ville nulle donc pas possible de créer l'adresse");
+    public Adresse {
+        if (ville == null) {
+            throw new IllegalArgumentException("La ville ne doit pas être nulle");
         }
     }
 
-
+    public static Adresse ville(String nomVille) {
+        return new Adresse(null,null, nomVille);
+    }
 }
