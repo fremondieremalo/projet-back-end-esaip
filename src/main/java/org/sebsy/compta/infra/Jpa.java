@@ -11,7 +11,7 @@ public class Jpa {
             .jdbcUrl(Env.required("DB_URL"))
             .jdbcCredentials(Env.required("DB_USER"), Env.required("DB_PASSWORD"))
             .jdbcPoolSize(10)
-            .schemaToolingAction(Action.VALIDATE)
+            .schemaToolingAction(Action.UPDATE)
             .property("hibernate.generate_statistics", true)
             .createEntityManagerFactory();
 

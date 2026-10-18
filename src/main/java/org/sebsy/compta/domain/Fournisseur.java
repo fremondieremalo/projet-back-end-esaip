@@ -7,7 +7,7 @@ import java.util.Objects;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name="fournisseurs")
+@Table(name="fournisseur")
 public class Fournisseur {
 
     @Id

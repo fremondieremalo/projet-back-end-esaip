@@ -53,4 +53,9 @@ Question 8 :
 j'ai changé le nom de la table fournisseur avec une erreur a fournisseurs :
 [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.4:java (default-cli) on project demo-data-access: An exception occurred while executing the Java class. null: ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persistence unit: compta]: Schema validation: missing table [fournisseurs] -> [Help 1]
 
-
+Question 9 : 
+Oui l'application demarre
+alter table if exists fournisseur modify column rue varchar(255)
+Error executing DDL "alter table if exists fournisseur modify column code_postal varchar(255)" via JDBC [(conn=3427) ALTER command denied to user 'app'@'172.18.0.1' for table `compta`.`fournisseur`]
+C'est la gestion stricte des droits sur la base de données. L'utilisateur app n'a pas les droits de modifier la structure, il ne peut faire que de la manipulation de données, ce qui empêche Hibernate de modifier la structure de la table.
+Hibernate aurait modifié la structure reelle de la table en production pour l'adapter au code Java. C'est un risque qui peut provoquer des pertes de données ou la perte de colonnes utiles pour d'autrs 
