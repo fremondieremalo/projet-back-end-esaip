@@ -58,4 +58,20 @@ Oui l'application demarre
 alter table if exists fournisseur modify column rue varchar(255)
 Error executing DDL "alter table if exists fournisseur modify column code_postal varchar(255)" via JDBC [(conn=3427) ALTER command denied to user 'app'@'172.18.0.1' for table `compta`.`fournisseur`]
 C'est la gestion stricte des droits sur la base de données. L'utilisateur app n'a pas les droits de modifier la structure, il ne peut faire que de la manipulation de données, ce qui empêche Hibernate de modifier la structure de la table.
-Hibernate aurait modifié la structure reelle de la table en production pour l'adapter au code Java. C'est un risque qui peut provoquer des pertes de données ou la perte de colonnes utiles pour d'autrs 
+Hibernate aurait modifié la structure reelle de la table en production pour l'adapter au code Java. C'est un risque qui peut provoquer des pertes de données ou la perte de colonnes utiles pour d'autrs
+
+Question 10 :
+DEBUG org.hibernate.SQL - select f1_0.id,f1_0.rue,f1_0.code_postal,f1_0.ville,f1_0.nom from fournisseur f1_0 where f1_0.id=?
+== : true
+nb req exec q10 : 1
+
+== renvoie true et 1 seule commande executée
+
+Question 11 :
+DEBUG org.hibernate.SQL - select f1_0.id,f1_0.rue,f1_0.code_postal,f1_0.ville,f1_0.nom from fournisseur f1_0 where f1_0.id=?
+DEBUG org.hibernate.SQL - select f1_0.id,f1_0.rue,f1_0.code_postal,f1_0.ville,f1_0.nom from fournisseur f1_0 where f1_0.id=?
+== : false
+equals : true
+nb req exec q11 : 2
+
+== renvoie false, equals renvoie true et 2 commandes executées
