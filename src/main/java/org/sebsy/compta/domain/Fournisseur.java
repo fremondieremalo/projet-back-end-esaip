@@ -16,6 +16,7 @@ public class Fournisseur {
     @Column(nullable = false, length = 60, unique = true)
     private String nom;
     @Embedded
+    @AttributeOverride(name = "codePostal", column = @Column(name = "code_postal"))
     private Adresse adresse;
 
     protected Fournisseur() {

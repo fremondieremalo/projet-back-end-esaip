@@ -29,4 +29,5 @@ J'ai lancé le mvn dependency:tree -Dincludes=jakarta.persistence, voici les lig
 Question 4 :
 ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persistence unit: compta]: Schema validation: missing column [codePostal] in table [fournisseur]
 
-
+Question 5 :
+On corrige dans l'entité propriétaire (Fournisseur) car l'objet valeur (Adresse) est fait pour être réutilisable par d'autres entités, elles pourront donc mapper ces données sur des colonnes nommées différemment.
