@@ -31,3 +31,6 @@ ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persiste
 
 Question 5 :
 On corrige dans l'entité propriétaire (Fournisseur) car l'objet valeur (Adresse) est fait pour être réutilisable par d'autres entités, elles pourront donc mapper ces données sur des colonnes nommées différemment.
+
+Question 6 :
+La compilation fonctionne
