@@ -48,3 +48,9 @@ avec string a la place de int pour id cela ne fonctionne pas :
 validate vérifie la compatibilité exacte des types JDBC, il tolère un type plus petit (Integer vers BIGINT), mais bloque les incompatibilités (String vers BIGINT)
 
 la limite d'un Integer en java est d'environ 2,14 milliards. Si l'ID BIGINT en base de données dépasse cette valeur, l'application Java plantera pour dépassement de capacité
+
+Question 8 :
+j'ai changé le nom de la table fournisseur avec une erreur a fournisseurs :
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.4:java (default-cli) on project demo-data-access: An exception occurred while executing the Java class. null: ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persistence unit: compta]: Schema validation: missing table [fournisseurs] -> [Help 1]
+
+
