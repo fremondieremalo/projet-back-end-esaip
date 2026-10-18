@@ -34,3 +34,17 @@ On corrige dans l'entité propriétaire (Fournisseur) car l'objet valeur (Adress
 
 Question 6 :
 La compilation fonctionne
+
+Question 7 :
+18/10/2026 10h36 -> je pense que hibernate va refuser de démarrer car integer en java est différent de bigint en SQL
+résultat : cela a fonctionné : DEBUG org.hibernate.SQL - select f1_0.id,f1_0.rue,f1_0.code_postal,f1_0.ville,f1_0.nom from fournisseur f1_0 where f1_0.id=?
+                                Quincaillerie du Maine
+                                Adresse complète ? false
+                                
+avec string a la place de int pour id cela ne fonctionne pas :
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.4:java (default-cli) on project demo-data-access: An exception occurred while executing the Java class. null: ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persistence unit: compta]: Schema validation: wrong column type encountered in column [id] in table [article]; found [bigint (Types#BIGINT)], but expecting [varchar(255) (Types#VARCHAR)] -> [Help 1]
+
+
+validate vérifie la compatibilité exacte des types JDBC, il tolère un type plus petit (Integer vers BIGINT), mais bloque les incompatibilités (String vers BIGINT)
+
+la limite d'un Integer en java est d'environ 2,14 milliards. Si l'ID BIGINT en base de données dépasse cette valeur, l'application Java plantera pour dépassement de capacité
