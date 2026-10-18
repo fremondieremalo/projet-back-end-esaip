@@ -26,5 +26,7 @@ J'ai lancé le mvn dependency:tree -Dincludes=jakarta.persistence, voici les lig
 [INFO] Finished at: 2026-10-14T11:10:27+02:00
 [INFO] ------------------------------------------------------------------------
 
+Question 4 :
+ExceptionInInitializerError: Unable to build Hibernate SessionFactory  [persistence unit: compta]: Schema validation: missing column [codePostal] in table [fournisseur]
 
 
