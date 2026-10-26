@@ -75,3 +75,11 @@ equals : true
 nb req exec q11 : 2
 
 == renvoie false, equals renvoie true et 2 commandes executées
+
+
+
+TP 6
+Question 2 :
+Si l'on ne met pas transient, il va y avoir une erreur car JPA va mapper la valeur sur la bdd mais il n'y a pas de colonne pour la valeur de prixttc
+
+
