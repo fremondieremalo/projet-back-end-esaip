@@ -82,4 +82,21 @@ TP 6
 Question 2 :
 Si l'on ne met pas transient, il va y avoir une erreur car JPA va mapper la valeur sur la bdd mais il n'y a pas de colonne pour la valeur de prixttc
 
+Question 3 :
+La classe ne s'initialise pas lorsque l'on remplace bigdecimale par double :
+Exception in thread "main" java.lang.NoClassDefFoundError: Could not initialize class org.sebsy.compta.infra.Jpa
+	at org.sebsy.compta.app.EssaiMapping.main(EssaiMapping.java:42)
+Caused by: java.lang.ExceptionInInitializerError: Exception jakarta.persistence.PersistenceException: Unable to build Hibernate SessionFactory  [persistence unit: compta]  [in thread "main"]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1457)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:264)
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:119)
+	at jakarta.persistence.PersistenceConfiguration.createEntityManagerFactory(PersistenceConfiguration.java:224)
+	at org.hibernate.jpa.HibernatePersistenceConfiguration.createEntityManagerFactory(HibernatePersistenceConfiguration.java:157)
+	at org.sebsy.compta.infra.Jpa.<clinit>(Jpa.java:18)
+	at org.sebsy.compta.app.EssaiMapping.main(EssaiMapping.java:13)
+	
+	
+Question 4 :
+Échec de l'insertion. Message d'erreur : could not execute statement [(conn=103) Field 'id_fou' doesn't have a default value] [insert into article (actif,designation,prix,ref) values (?,?,?,?)]
+Hivernate avec validate vérifie uniquement si les valeurs répondent aux propriétés mais ne regarde pas si c'est null ou non
 
