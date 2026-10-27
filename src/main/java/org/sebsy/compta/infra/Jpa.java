@@ -5,11 +5,13 @@ import org.hibernate.jpa.HibernatePersistenceConfiguration;
 import org.hibernate.tool.schema.Action;
 import org.sebsy.compta.domain.Adresse;
 import org.sebsy.compta.domain.Article;
+import org.sebsy.compta.domain.Bon;
 import org.sebsy.compta.domain.Fournisseur;
+
 
 public class Jpa {
     private static final SessionFactory FACTORY = new HibernatePersistenceConfiguration("compta")
-            .managedClasses(Fournisseur.class, Article.class, Adresse.class)
+            .managedClasses(Fournisseur.class, Article.class, Adresse.class, Bon.class)
             .jdbcUrl(Env.required("DB_URL"))
             .jdbcCredentials(Env.required("DB_USER"), Env.required("DB_PASSWORD"))
             .jdbcPoolSize(10)
