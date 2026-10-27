@@ -100,3 +100,17 @@ Question 4 :
 Échec de l'insertion. Message d'erreur : could not execute statement [(conn=103) Field 'id_fou' doesn't have a default value] [insert into article (actif,designation,prix,ref) values (?,?,?,?)]
 Hivernate avec validate vérifie uniquement si les valeurs répondent aux propriétés mais ne regarde pas si c'est null ou non
 
+Question 6 :
+DEBUG org.hibernate.SQL - select b1_0.id,b1_0.date_cmde,b1_0.delai,b1_0.numero,b1_0.statut from bon b1_0 order by b1_0.numero
+Bon n 1 - Statut : LIVRE - Date : 2026-02-09T09:30
+Bon n 2 - Statut : LIVRE - Date : 2026-03-02T09:30
+Bon n 3 - Statut : LIVRE - Date : 2026-04-03T17:30
+Bon n 4 - Statut : LIVRE - Date : 2026-04-05T11:40
+Bon n 5 - Statut : LIVRE - Date : 2026-05-15T14:45
+Bon n 6 - Statut : VALIDE - Date : 2026-06-24T18:55
+Bon n 7 - Statut : BROUILLON - Date : 2026-07-02T10:15
+
+Question 7 :
+DEBUG org.hibernate.SQL - select b1_0.id,b1_0.date_cmde,b1_0.delai,b1_0.numero,b1_0.statut from bon b1_0 order by b1_0.numero
+Échec de l'insertion. Message d'erreur : Null value was assigned to a property [class org.sebsy.compta.domain.Bon.delai] of primitive type: 'org.sebsy.compta.domain.Bon.delai' (setter)
+-> car int != Integer, int est un type de données primitif alors que Integer est une classe qui représente un objet, dans la lecture de données on utilise la classe et pas le type primitif

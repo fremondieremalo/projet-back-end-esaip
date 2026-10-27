@@ -17,7 +17,7 @@ public class Bon {
     @Column(name = "date_cmde", updatable = false)
     private LocalDateTime dateCommande;
 
-    private Integer delai;
+    private int delai;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
